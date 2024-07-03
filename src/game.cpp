@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <filesystem>
 #include <algorithm>
+#include <ncurses.h>
 
 namespace fs = std::filesystem;
 
@@ -74,37 +75,41 @@ GameState initializeGame(const std::string& filename) {
 
     state.direction = RIGHT;
     state.gameOver = false;
-    state.lives = 5; // Número inicial de vidas
+    state.lives = 5; // Número inicial de vidas padrão, pode ser ajustado no main
     state.foodCounter = 0; // Número inicial de comidas consumidas
     return state;
 }
 
 void renderGame(const GameState& state) {
-    system("clear");
+    clear(); // Limpa a tela antes de desenhar
+
+    // Desenha a cabeçalho
+    mvprintw(0, 0, "Lives: %d | Score: %d | Food eaten: %d of 10", state.lives, state.foodCounter * 10, state.foodCounter);
+
+    // Desenha o jogo
     for (int y = 0; y < state.height; y++) {
         for (int x = 0; x < state.width; x++) {
             if (x == state.food.x && y == state.food.y) {
-                std::cout << "F";
+                mvprintw(y + 1, x, "F");
             } else if (state.grid[y][x] == '#') {
-                std::cout << "#";
+                mvprintw(y + 1, x, "#");
             } else {
                 bool isSnake = false;
                 for (const auto& pos : state.snake) {
                     if (pos.x == x && pos.y == y) {
+                        mvprintw(y + 1, x, "O");
                         isSnake = true;
                         break;
                     }
                 }
-                if (isSnake) {
-                    std::cout << "O";
-                } else {
-                    std::cout << " ";
+                if (!isSnake) {
+                    mvprintw(y + 1, x, " ");
                 }
             }
         }
-        std::cout << std::endl;
     }
-    std::cout << "Lives: " << state.lives << " Food eaten: " << state.foodCounter << "/5" << std::endl;
+
+    refresh(); // Atualiza a tela
 }
 
 bool updateGame(GameState& state) {
