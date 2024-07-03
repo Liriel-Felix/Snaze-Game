@@ -1,6 +1,7 @@
 CMakeFiles/snaze-game.dir/src/game.cpp.o: \
- /home/lirielfelix/snaze/Snaze-Game/src/game.cpp \
- /usr/include/stdc-predef.h /home/lirielfelix/snaze/Snaze-Game/src/game.h \
+ /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/game.cpp \
+ /usr/include/stdc-predef.h \
+ /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/game.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lirielfelix/snaze/Snaze-Game/src
+CXX_INCLUDES = -I/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src
 
 CXX_FLAGS = -std=gnu++17
 

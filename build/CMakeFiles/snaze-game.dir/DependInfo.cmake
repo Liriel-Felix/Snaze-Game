@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/lirielfelix/snaze/Snaze-Game/src/game.cpp" "CMakeFiles/snaze-game.dir/src/game.cpp.o" "gcc" "CMakeFiles/snaze-game.dir/src/game.cpp.o.d"
-  "/home/lirielfelix/snaze/Snaze-Game/src/main.cpp" "CMakeFiles/snaze-game.dir/src/main.cpp.o" "gcc" "CMakeFiles/snaze-game.dir/src/main.cpp.o.d"
+  "/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/game.cpp" "CMakeFiles/snaze-game.dir/src/game.cpp.o" "gcc" "CMakeFiles/snaze-game.dir/src/game.cpp.o.d"
+  "/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/main.cpp" "CMakeFiles/snaze-game.dir/src/main.cpp.o" "gcc" "CMakeFiles/snaze-game.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links.

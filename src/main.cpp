@@ -82,7 +82,11 @@ int main(int argc, char** argv) {
 
             if (foodConsumed && state.foodCounter >= foodRequired) {
                 mvprintw(state.height + 2, 0, "Food consumed! Moving to next level...");
-                refresh();
+                // Espera pela tecla Enter
+                int ch;
+                while ((ch = getch()) != '\n' && ch != '\r') {
+                   refresh();
+                }
                 usleep(1000000); // Pausa por 1 segundo antes de mover para o próximo nível
                 break; // Passa para o próximo nível
             }

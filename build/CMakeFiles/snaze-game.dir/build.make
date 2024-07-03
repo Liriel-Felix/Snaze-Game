@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lirielfelix/snaze/Snaze-Game
+CMAKE_SOURCE_DIR = /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lirielfelix/snaze/Snaze-Game/build
+CMAKE_BINARY_DIR = /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/snaze-game.dir/depend.make
@@ -72,30 +72,30 @@ include CMakeFiles/snaze-game.dir/flags.make
 CMakeFiles/snaze-game.dir/src/main.cpp.o: CMakeFiles/snaze-game.dir/flags.make
 CMakeFiles/snaze-game.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/snaze-game.dir/src/main.cpp.o: CMakeFiles/snaze-game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/snaze-game.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/snaze-game.dir/src/main.cpp.o -MF CMakeFiles/snaze-game.dir/src/main.cpp.o.d -o CMakeFiles/snaze-game.dir/src/main.cpp.o -c /home/lirielfelix/snaze/Snaze-Game/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/snaze-game.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/snaze-game.dir/src/main.cpp.o -MF CMakeFiles/snaze-game.dir/src/main.cpp.o.d -o CMakeFiles/snaze-game.dir/src/main.cpp.o -c /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/main.cpp
 
 CMakeFiles/snaze-game.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/snaze-game.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lirielfelix/snaze/Snaze-Game/src/main.cpp > CMakeFiles/snaze-game.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/main.cpp > CMakeFiles/snaze-game.dir/src/main.cpp.i
 
 CMakeFiles/snaze-game.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/snaze-game.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lirielfelix/snaze/Snaze-Game/src/main.cpp -o CMakeFiles/snaze-game.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/main.cpp -o CMakeFiles/snaze-game.dir/src/main.cpp.s
 
 CMakeFiles/snaze-game.dir/src/game.cpp.o: CMakeFiles/snaze-game.dir/flags.make
 CMakeFiles/snaze-game.dir/src/game.cpp.o: ../src/game.cpp
 CMakeFiles/snaze-game.dir/src/game.cpp.o: CMakeFiles/snaze-game.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/snaze-game.dir/src/game.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/snaze-game.dir/src/game.cpp.o -MF CMakeFiles/snaze-game.dir/src/game.cpp.o.d -o CMakeFiles/snaze-game.dir/src/game.cpp.o -c /home/lirielfelix/snaze/Snaze-Game/src/game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/snaze-game.dir/src/game.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/snaze-game.dir/src/game.cpp.o -MF CMakeFiles/snaze-game.dir/src/game.cpp.o.d -o CMakeFiles/snaze-game.dir/src/game.cpp.o -c /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/game.cpp
 
 CMakeFiles/snaze-game.dir/src/game.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/snaze-game.dir/src/game.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lirielfelix/snaze/Snaze-Game/src/game.cpp > CMakeFiles/snaze-game.dir/src/game.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/game.cpp > CMakeFiles/snaze-game.dir/src/game.cpp.i
 
 CMakeFiles/snaze-game.dir/src/game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/snaze-game.dir/src/game.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lirielfelix/snaze/Snaze-Game/src/game.cpp -o CMakeFiles/snaze-game.dir/src/game.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/src/game.cpp -o CMakeFiles/snaze-game.dir/src/game.cpp.s
 
 # Object files for target snaze-game
 snaze__game_OBJECTS = \
@@ -109,7 +109,7 @@ snaze-game: CMakeFiles/snaze-game.dir/src/main.cpp.o
 snaze-game: CMakeFiles/snaze-game.dir/src/game.cpp.o
 snaze-game: CMakeFiles/snaze-game.dir/build.make
 snaze-game: CMakeFiles/snaze-game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable snaze-game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable snaze-game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/snaze-game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -121,6 +121,6 @@ CMakeFiles/snaze-game.dir/clean:
 .PHONY : CMakeFiles/snaze-game.dir/clean
 
 CMakeFiles/snaze-game.dir/depend:
-	cd /home/lirielfelix/snaze/Snaze-Game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lirielfelix/snaze/Snaze-Game /home/lirielfelix/snaze/Snaze-Game /home/lirielfelix/snaze/Snaze-Game/build /home/lirielfelix/snaze/Snaze-Game/build /home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles/snaze-game.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles/snaze-game.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/snaze-game.dir/depend
 

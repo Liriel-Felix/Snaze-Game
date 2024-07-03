@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lirielfelix/snaze/Snaze-Game
+CMAKE_SOURCE_DIR = /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lirielfelix/snaze/Snaze-Game/build
+CMAKE_BINARY_DIR = /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/snaze-game.dir/clean
 CMakeFiles/snaze-game.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/snaze-game.dir/build.make CMakeFiles/snaze-game.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/snaze-game.dir/build.make CMakeFiles/snaze-game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles --progress-num=1,2,3 "Built target snaze-game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles --progress-num=1,2,3 "Built target snaze-game"
 .PHONY : CMakeFiles/snaze-game.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/snaze-game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/snaze-game.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles 0
 .PHONY : CMakeFiles/snaze-game.dir/rule
 
 # Convenience name for target.
