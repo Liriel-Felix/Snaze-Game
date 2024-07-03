@@ -1,0 +1,3 @@
+/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles/snaze-game.dir
+/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles/edit_cache.dir
+/home/lirielfelix/snaze/Snaze-Game/build/CMakeFiles/rebuild_cache.dir
