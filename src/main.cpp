@@ -15,11 +15,10 @@ void print_usage() {
 
 void print_welcome_message() {
     std::cout << "---> Welcome to the classic Snake Game <---\n"
-              << "\n"  
               << "Game simulation options:\n"
               << "--lives <num> Number of lives the snake shall have. Default = 5.\n"
               << "--food <num> Number of food pellets for the entire simulation. Default = 10.\n"
-              << "-----------------------------------------------------------------------------------\n"
+              << "--------------------------------------------------\n"
               << ">>> Press <ENTER> to start the game!\n";
 }
 
@@ -79,10 +78,13 @@ int main(int argc, char** argv) {
 
     GameState state;
     const int delay = 200000; // 200ms
+    bool allLevelsCompleted = true; // Flag para verificar se todos os níveis foram completados
 
-    // Loop principal para iterar pelos níveis
     for (const auto& level : levels) {
         state = initializeGame(level);
+        if (state.gameOver) {
+            continue; // Pula para o próximo nível se o atual contém caracteres inválidos
+        }
         state.lives = initialLives;
         state.foodCounter = 0; // Resetar contador de comida para cada nível
 
@@ -104,11 +106,12 @@ int main(int argc, char** argv) {
             mvprintw(state.height + 2, 0, "Game Over at level: %s", level.c_str());
             refresh();
             usleep(2000000); // Pausa por 2 segundos antes de sair
+            allLevelsCompleted = false; // Se o jogador perder todas as vidas, não completou todos os níveis
             break;
         }
     }
 
-    if (!state.gameOver && state.lives > 0) {
+    if (allLevelsCompleted && state.lives > 0) {
         mvprintw(state.height + 2, 0, "CONGRATULATIONS anaconda WON!\nThanks for playing!");
         refresh();
         usleep(2000000); // Pausa por 2 segundos antes de sair

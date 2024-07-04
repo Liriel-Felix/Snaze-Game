@@ -57,15 +57,21 @@ GameState initializeGame(const std::string& filename) {
     std::getline(file, line); // Pula o restante da primeira linha
 
     for (int i = 0; i < state.height; ++i) {
-        std::getline(file, state.grid[i]);
-        for (int j = 0; j < state.width; ++j) {
-            if (state.grid[i][j] == '&') {
-                state.spawn = {j, i};
-                state.snake = {state.spawn}; // Inicializa a cobra na posição de spawn
-                state.grid[i][j] = ' ';
-            }
+    std::getline(file, state.grid[i]);
+    for (int j = 0; j < state.width; ++j) {
+        char cell = state.grid[i][j];
+        if (cell == '&') {
+            state.spawn = {j, i};
+            state.snake = {state.spawn}; // Inicializa a cobra na posição de spawn
+            state.grid[i][j] = ' ';
+        } else if (cell == '$' || std::isdigit(cell)) {
+            // Se um célula contém '$' ou um dígito, ignora esse nível
+            std::cerr << "Warning: Level " << filename << " contains invalid character '" << cell << "' and will be skipped." << std::endl;
+            state.gameOver = true; // Marca gameOver para ignorar esse nível
+            return state;
         }
     }
+}
 
     // Gera a comida em uma posição aleatória
     do {
