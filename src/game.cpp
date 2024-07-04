@@ -11,6 +11,16 @@
 
 namespace fs = std::filesystem;
 
+/**
+ * @brief Calcula a próxima posição da cobra com base na direção fornecida.
+ *
+ * Esta função recebe a posição atual da cobra e uma direção, e retorna a nova 
+ * posição da cobra após mover-se uma unidade na direção especificada.
+ *
+ * @param current A posição atual da cobra.
+ * @param direction A direção em que a cobra deve se mover.
+ * @return A nova posição da cobra após mover-se na direção especificada.
+ */
 Position getNextPosition(Position current, Direction direction) {
     switch (direction) {
         case UP: current.y--; break;
@@ -21,6 +31,17 @@ Position getNextPosition(Position current, Direction direction) {
     return current;
 }
 
+/**
+ * @brief Obtém as direções válidas para a próxima movimentação da cobra.
+ *
+ * Esta função avalia todas as direções possíveis (cima, baixo, esquerda, direita)
+ * a partir da posição atual da cobra e retorna as direções que não resultam em colisão
+ * com paredes ou com o próprio corpo da cobra.
+ *
+ * @param current A posição atual da cobra.
+ * @param state O estado atual do jogo, contendo informações sobre a grade, a posição da cobra e outros detalhes.
+ * @return Um vetor contendo as direções válidas para a próxima movimentação da cobra.
+ */
 std::vector<Direction> getValidDirections(Position current, const GameState& state) {
     std::vector<Direction> directions;
     std::vector<Direction> allDirections = {UP, DOWN, LEFT, RIGHT};
@@ -42,6 +63,16 @@ std::vector<Direction> getValidDirections(Position current, const GameState& sta
     return directions;
 }
 
+/**
+ * @brief Inicializa o estado do jogo a partir de um arquivo de nível.
+ *
+ * Esta função carrega o estado do jogo a partir de um arquivo de nível especificado,
+ * inicializando a cobra, a grade do jogo e a posição da comida. Se o arquivo contém
+ * caracteres inválidos, o nível será ignorado.
+ *
+ * @param filename O nome do arquivo de nível a ser carregado.
+ * @return O estado inicializado do jogo.
+ */
 GameState initializeGame(const std::string& filename) {
     GameState state;
     std::ifstream file(filename);
@@ -54,7 +85,7 @@ GameState initializeGame(const std::string& filename) {
     state.grid.resize(state.height);
 
     std::string line;
-    std::getline(file, line); // Pula o restante da primeira linha
+    std::getline(file, line); 
 
     for (int i = 0; i < state.height; ++i) {
     std::getline(file, state.grid[i]);
@@ -62,18 +93,15 @@ GameState initializeGame(const std::string& filename) {
         char cell = state.grid[i][j];
         if (cell == '&') {
             state.spawn = {j, i};
-            state.snake = {state.spawn}; // Inicializa a cobra na posição de spawn
+            state.snake = {state.spawn};
             state.grid[i][j] = ' ';
         } else if (cell == '$' || std::isdigit(cell)) {
-            // Se um célula contém '$' ou um dígito, ignora esse nível
             std::cerr << "Warning: Level " << filename << " contains invalid character '" << cell << "' and will be skipped." << std::endl;
-            state.gameOver = true; // Marca gameOver para ignorar esse nível
+            state.gameOver = true;
             return state;
         }
     }
 }
-
-    // Gera a comida em uma posição aleatória
     do {
         state.food.x = rand() % state.width;
         state.food.y = rand() % state.height;
@@ -81,19 +109,27 @@ GameState initializeGame(const std::string& filename) {
 
     state.direction = RIGHT;
     state.gameOver = false;
-    state.lives = 5; // Número inicial de vidas padrão, pode ser ajustado no main
-    state.foodCounter = 0; // Número inicial de comidas consumidas
+    state.lives = 5; 
+    state.foodCounter = 0; 
     return state;
 }
 
-// Atualize a assinatura da função para aceitar `foodRequired`
+/**
+ * @brief Renderiza o estado atual do jogo no terminal.
+ *
+ * Esta função limpa a tela e imprime o estado atual do jogo, incluindo vidas restantes, pontuação,
+ * quantidade de comida consumida e a posição atual da comida. A função percorre o tabuleiro de jogo
+ * e imprime caracteres para representar a comida, as partes da cobra e as paredes. Após a renderização,
+ * a tela é atualizada para refletir as mudanças feitas.
+ *
+ * @param state O estado atual do jogo a ser renderizado.
+ * @param foodRequired Número total de comidas que devem ser consumidas para completar o jogo.
+ */
 void renderGame(const GameState& state, int foodRequired) {
-    clear(); // Limpa a tela antes de desenhar
+    clear(); 
 
-    // Desenha o cabeçalho
     mvprintw(0, 0, "Lives: %d | Score: %d | Food eaten: %d of %d", state.lives, state.foodCounter * 10, state.foodCounter, foodRequired);
 
-    // Desenha o jogo
     for (int y = 0; y < state.height; y++) {
         for (int x = 0; x < state.width; x++) {
             if (x == state.food.x && y == state.food.y) {
@@ -116,9 +152,20 @@ void renderGame(const GameState& state, int foodRequired) {
         }
     }
 
-    refresh(); // Atualiza a tela
+    refresh(); 
 }
 
+/**
+ * @brief Atualiza o estado do jogo após cada movimento da cobra.
+ *
+ * Esta função verifica se a próxima posição da cabeça da cobra é válida,
+ * atualiza o estado do jogo conforme necessário (por exemplo, movendo a cobra,
+ * gerando nova comida, verificando colisões) e verifica se o jogo acabou devido
+ * a colisões ou se todas as comidas foram consumidas.
+ *
+ * @param state O estado atual do jogo.
+ * @return Verdadeiro se a comida foi consumida nesta iteração, falso caso contrário.
+ */
 bool updateGame(GameState& state) {
     Position next = getNextPosition(state.snake.front(), state.direction);
 
@@ -127,8 +174,8 @@ bool updateGame(GameState& state) {
         if (state.lives <= 0) {
             state.gameOver = true;
         } else {
-            state.snake = {state.spawn}; // Reseta a posição da cobra para o ponto inicial
-            state.direction = RIGHT; // Direção inicial
+            state.snake = {state.spawn}; 
+            state.direction = RIGHT; 
         }
         return false;
     }
@@ -139,8 +186,8 @@ bool updateGame(GameState& state) {
             if (state.lives <= 0) {
                 state.gameOver = true;
             } else {
-                state.snake = {state.spawn}; // Reseta a posição da cobra para o ponto inicial
-                state.direction = RIGHT; // Direção inicial
+                state.snake = {state.spawn}; 
+                state.direction = RIGHT; 
             }
             return false;
         }
@@ -149,12 +196,11 @@ bool updateGame(GameState& state) {
     state.snake.insert(state.snake.begin(), next);
     if (next.x == state.food.x && next.y == state.food.y) {
         state.foodCounter++;
-        // Gera nova comida
         do {
             state.food.x = rand() % state.width;
             state.food.y = rand() % state.height;
         } while (state.grid[state.food.y][state.food.x] != ' ');
-        return true; // Comida consumida
+        return true; 
     } else {
         state.snake.pop_back();
     }
@@ -162,6 +208,17 @@ bool updateGame(GameState& state) {
     return false;
 }
 
+/**
+ * @brief Calcula a próxima direção que a cobra deve seguir para alcançar a comida mais próxima.
+ *
+ * Esta função utiliza uma busca em largura para encontrar o caminho mais curto da cabeça da cobra
+ * até a posição atual da comida no tabuleiro. Retorna a primeira direção do caminho encontrado
+ * que a cobra deve seguir para se mover em direção à comida.
+ *
+ * @param state O estado atual do jogo.
+ * @return A próxima direção que a cobra deve seguir para alcançar a comida mais próxima.
+ *         Se não houver um caminho válido encontrado, retorna a direção atual da cobra.
+ */
 Direction getNextDirection(const GameState& state) {
     struct Node {
         Position pos;
@@ -191,6 +248,5 @@ Direction getNextDirection(const GameState& state) {
         }
     }
 
-    // Se não encontrar um caminho, retorna a direção atual
     return state.direction;
 }
