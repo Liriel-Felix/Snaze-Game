@@ -10,7 +10,17 @@
 namespace fs = std::filesystem;
 
 void print_usage() {
-    std::cout << "Usage: t1 [--life N] [--food N]" << std::endl;
+    std::cout << "Usage: snaze-game [--life N] [--food N]" << std::endl;
+}
+
+void print_welcome_message() {
+    std::cout << "---> Welcome to the classic Snake Game <---\n"
+              << "\n"  
+              << "Game simulation options:\n"
+              << "--lives <num> Number of lives the snake shall have. Default = 5.\n"
+              << "--food <num> Number of food pellets for the entire simulation. Default = 10.\n"
+              << "-----------------------------------------------------------------------------------\n"
+              << ">>> Press <ENTER> to start the game!\n";
 }
 
 int main(int argc, char** argv) {
@@ -22,9 +32,8 @@ int main(int argc, char** argv) {
     }
 
     int initialLives = 5; // Número inicial de vidas padrão
-    int foodRequired = 5; // Número inicial de comidas necessárias padrão
+    int foodRequired = 10; // Número inicial de comidas necessárias padrão
 
-    // Estrutura para definir os argumentos nomeados
     static struct option long_options[] = {
         {"life", required_argument, 0, 'l'},
         {"food", required_argument, 0, 'f'},
@@ -34,7 +43,6 @@ int main(int argc, char** argv) {
     int opt;
     int option_index = 0;
 
-    // Parsing dos argumentos
     while ((opt = getopt_long(argc, argv, "l:f:", long_options, &option_index)) != -1) {
         switch (opt) {
             case 'l':
@@ -49,6 +57,9 @@ int main(int argc, char** argv) {
         }
     }
 
+    print_welcome_message();
+    std::cin.get();
+
     std::vector<std::string> levels;
     for (const auto& entry : fs::directory_iterator(assetsDir)) {
         levels.push_back(entry.path().string());
@@ -61,7 +72,6 @@ int main(int argc, char** argv) {
 
     std::sort(levels.begin(), levels.end());
 
-    // Inicializa o ncurses
     initscr();
     noecho();
     cbreak();
@@ -70,23 +80,21 @@ int main(int argc, char** argv) {
     GameState state;
     const int delay = 200000; // 200ms
 
+    // Loop principal para iterar pelos níveis
     for (const auto& level : levels) {
         state = initializeGame(level);
         state.lives = initialLives;
+        state.foodCounter = 0; // Resetar contador de comida para cada nível
 
         while (!state.gameOver) {
-            renderGame(state);
+            renderGame(state, foodRequired); // Passa foodRequired para renderGame
             usleep(delay); // Pausa por 200ms
             state.direction = getNextDirection(state);
             bool foodConsumed = updateGame(state);
 
             if (foodConsumed && state.foodCounter >= foodRequired) {
                 mvprintw(state.height + 2, 0, "Food consumed! Moving to next level...");
-                // Espera pela tecla Enter
-                int ch;
-                while ((ch = getch()) != '\n' && ch != '\r') {
-                   refresh();
-                }
+                refresh();
                 usleep(1000000); // Pausa por 1 segundo antes de mover para o próximo nível
                 break; // Passa para o próximo nível
             }
@@ -100,13 +108,12 @@ int main(int argc, char** argv) {
         }
     }
 
-    if (state.lives > 0) {
-        mvprintw(state.height + 2, 0, "All levels completed!");
+    if (!state.gameOver && state.lives > 0) {
+        mvprintw(state.height + 2, 0, "CONGRATULATIONS anaconda WON!\nThanks for playing!");
         refresh();
         usleep(2000000); // Pausa por 2 segundos antes de sair
     }
 
-    // Finaliza o ncurses
     endwin();
 
     return 0;

@@ -54,7 +54,7 @@ GameState initializeGame(const std::string& filename) {
     state.grid.resize(state.height);
 
     std::string line;
-    std::getline(file, line); // Skip the rest of the first line
+    std::getline(file, line); // Pula o restante da primeira linha
 
     for (int i = 0; i < state.height; ++i) {
         std::getline(file, state.grid[i]);
@@ -67,7 +67,7 @@ GameState initializeGame(const std::string& filename) {
         }
     }
 
-    // Spawn food
+    // Gera a comida em uma posição aleatória
     do {
         state.food.x = rand() % state.width;
         state.food.y = rand() % state.height;
@@ -80,11 +80,12 @@ GameState initializeGame(const std::string& filename) {
     return state;
 }
 
-void renderGame(const GameState& state) {
+// Atualize a assinatura da função para aceitar `foodRequired`
+void renderGame(const GameState& state, int foodRequired) {
     clear(); // Limpa a tela antes de desenhar
 
-    // Desenha a cabeçalho
-    mvprintw(0, 0, "Lives: %d | Score: %d | Food eaten: %d of 10", state.lives, state.foodCounter * 10, state.foodCounter);
+    // Desenha o cabeçalho
+    mvprintw(0, 0, "Lives: %d | Score: %d | Food eaten: %d of %d", state.lives, state.foodCounter * 10, state.foodCounter, foodRequired);
 
     // Desenha o jogo
     for (int y = 0; y < state.height; y++) {
@@ -142,7 +143,7 @@ bool updateGame(GameState& state) {
     state.snake.insert(state.snake.begin(), next);
     if (next.x == state.food.x && next.y == state.food.y) {
         state.foodCounter++;
-        // Spawn new food
+        // Gera nova comida
         do {
             state.food.x = rand() % state.width;
             state.food.y = rand() % state.height;

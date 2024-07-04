@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <tuple> // Adicionado para usar std::tie
 
 enum Direction { UP, DOWN, LEFT, RIGHT };
 
@@ -27,7 +28,7 @@ struct GameState {
 };
 
 GameState initializeGame(const std::string& filename);
-void renderGame(const GameState& state);
+void renderGame(const GameState& state, int foodRequired);
 bool updateGame(GameState& state);
 Direction getNextDirection(const GameState& state);
 Position getNextPosition(Position current, Direction direction);

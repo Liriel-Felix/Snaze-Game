@@ -1,3 +1,0 @@
-/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles/snaze-game.dir
-/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles/edit_cache.dir
-/home/diogolinux/Programacao-I/projeto-final/versao-certa/Snaze-Game/build/CMakeFiles/rebuild_cache.dir

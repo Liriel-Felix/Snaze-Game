@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/snaze-game.dir/src/main.cpp.o CMakeFiles/snaze-game.dir/src/game.cpp.o -o snaze-game  -lncurses 
