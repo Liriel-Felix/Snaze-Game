@@ -34,7 +34,6 @@ void print_welcome_message() {
               << ">>> Press <ENTER> to start the game!\n";
 }
 
-
 /**
  * @brief Função principal que inicia o jogo Snake.
  *
@@ -127,26 +126,28 @@ int main(int argc, char** argv) {
             bool foodConsumed = updateGame(state);
 
             if (foodConsumed && state.foodCounter >= foodRequired) {
-                mvprintw(state.height + 2, 0, "Food consumed! Moving to next level...");
+                mvprintw(state.height + 2, 0, "Food consumed! Level completed! Press ENTER to move to the next level...");
                 refresh();
-                usleep(1000000); 
-                break; 
+                while (getch() != '\n') {}
+                break; // Passa para o próximo nível
             }
-        }
 
-        if (state.lives <= 0) {
-            mvprintw(state.height + 2, 0, "Game Over at level: %s", level.c_str());
-            refresh();
-            usleep(2000000); 
-            allLevelsCompleted = false; 
-            break;
+            if (state.lives <= 0) {
+                mvprintw(state.height + 2, 0, "Game Over! Press ENTER to exit.");
+                refresh();
+                while (getch() != '\n') {}
+                usleep(2000000); 
+                allLevelsCompleted = false; 
+                break;
+            }
         }
     }
 
     // Verifica se todos os níveis foram completados e se ainda há vidas restantes
     if (allLevelsCompleted && state.lives > 0) {
-        mvprintw(state.height + 2, 0, "CONGRATULATIONS anaconda WON!\nThanks for playing!");
+        mvprintw(state.height + 2, 0, "CONGRATULATIONS anaconda WON!\nThanks for playing! Press ENTER to exit.");
         refresh();
+        while (getch() != '\n') {}
         usleep(2000000); 
     }
 
